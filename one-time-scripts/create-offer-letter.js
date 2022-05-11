@@ -1,0 +1,92 @@
+const { databaseInit } = require("../app");
+const randomString = require("randomstring");
+
+async function start() {
+  const { Models } = await databaseInit();
+  const { Offer } = Models;
+  const offerInstance = new Offer({
+    uniqueId: randomString.generate(),
+    org: "627aa43a636d9f8908dbda86",
+    introSection: {
+      candidateName: "Shubh Arya",
+      jobTitle: "Senior Developer",
+      jobLocation: "Bengaluru",
+      jobExpiryDate: new Date("2015-03-25T12:00:00Z").toISOString(),
+      curreny: "Indian Rupees",
+      baseSalary: 1500000,
+      signingBonus: 100000,
+      noOfShares: 100000,
+      targetBonus: 5,
+      benefits: 800000,
+    },
+    benefitsSection: [
+        {
+          name: "Medical",
+          iconUrl: "https://i.ibb.co/WH9tmpy/svgviewer-png-output.png",
+          description: "We cover 100% of the insurance cost for you and 50% for your dependents.",
+          amount: 240000,
+        },
+        {
+          name: "Dentist",
+          iconUrl: "https://i.ibb.co/Z60mKtK/svgviewer-png-output-2.png",
+          description: "We cover 100% of the insurance cost for you and 50% for your dependents.",
+          amount: 10000,
+        },
+        {
+          name: "Vision",
+          iconUrl: "https://i.ibb.co/hDkHmKq/svgviewer-png-output-3.png",
+          description: "We cover 100% of the insurance cost for you and 50% for your dependents.",
+          amount: 10000,
+        },
+        {
+          name: "Free Lunch",
+          iconUrl: "https://i.ibb.co/M5B63bz/svgviewer-png-output-4.png",
+          description: "We offer daily lunches and snacks in the office.",
+          amount: 136000,
+        },
+        {
+          name: "Unlimited PTO",
+          iconUrl: "https://i.ibb.co/xmrMVKT/svgviewer-png-output-5.png",
+          description: "Dunder Mifflin offers unlimited vacation. Feel free to take the time off you need.",
+          amount: null,
+        },
+        {
+          name: "401K",
+          iconUrl: "https://i.ibb.co/vVSZghF/svgviewer-png-output-6.png",
+          description:
+            "We offer 401k matching with our partner Human Interest and will match up to 4% of your base salary.",
+          amount: 400000,
+        },
+        {
+          name: "Dog Friendly Office",
+          iconUrl: "https://i.ibb.co/XWwtvv3/svgviewer-png-output-7.png",
+          description:
+            "We love our office dogs! Bring your fur baby to work and join our group of office dogs at Dunder Mifflin!",
+          amount: null,
+        },
+        {
+          name: "Free Paper",
+          iconUrl: "https://i.ibb.co/88brWqS/svgviewer-png-output-8.png",
+          description:
+            "As an employee at Dunder Mifflin, you'll never have to worry about buying paper for your printer ever again - it's all on us!",
+          amount: 4000,
+        },
+      ],
+    compProjection: {
+      baseSalary: 1500000,
+      signingBonus: 100000,
+      noOfShares: 100000,
+      targetBonus: 5,
+      benefits: 800000,
+    },
+    offerStatus: "Accepted",
+    rejectReason: "None"
+  });
+  
+  console.log(offerInstance);
+  await offerInstance.save();
+  console.log({ message: "Successfully created offer" });
+  process.exit(0);
+}
+
+start();
