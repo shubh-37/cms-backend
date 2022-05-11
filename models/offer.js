@@ -72,7 +72,7 @@ const modelProperties = {
   },
   compProjection: {
     compDiversification: {
-      type:candidateName [compDiversificationSchema],
+      type: [compDiversificationSchema],
     },
   },
   offerStatus: {
