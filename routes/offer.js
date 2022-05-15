@@ -8,8 +8,8 @@ function offer(connection, Models) {
   router.get("/", async function (req, res) {
     const { uniqueId } = req.query;
     console.log({ uniqueId });
-    const offerInstance = await Offer.findOne({ uniqueId });
-    res.send({offer: offerInstance});
+    const offerInstance = await Offer.findOne({ uniqueId }).populate({ path: "org", model: "Organisation" });
+    res.send({ offer: offerInstance });
   });
   return router;
 }

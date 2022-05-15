@@ -5,8 +5,8 @@ async function start() {
   const { Models } = await databaseInit();
   const { Offer } = Models;
   const offerInstance = new Offer({
-    uniqueId: randomString.generate(),
-    org: "627aa43a636d9f8908dbda86",
+    uniqueId: randomString.generate(7),
+    org: "627aa5289aa368a4fdbfe2a4",
     introSection: {
       candidateName: "Shubh Arya",
       jobTitle: "Senior Developer",

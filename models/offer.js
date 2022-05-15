@@ -67,13 +67,11 @@ const modelProperties = {
       type: Number,
     },
   },
-  benfitsSection: {
+  benefitsSection: {
     type: [PerkSchema]
   },
   compProjection: {
-    compDiversification: {
-      type: [compDiversificationSchema],
-    },
+    type: [compDiversificationSchema]
   },
   offerStatus: {
     type: String,
