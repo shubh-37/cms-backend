@@ -6,7 +6,7 @@ async function start() {
   const { Offer } = Models;
   const offerInstance = new Offer({
     uniqueId: randomString.generate(7),
-    org: "627aa5289aa368a4fdbfe2a4",
+    org: "628526e3aa63951ca3301f28",
     introSection: {
       candidateName: "Shubh Arya",
       jobTitle: "Senior Developer",

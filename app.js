@@ -11,6 +11,7 @@ const _ = require("lodash");
 const res = require("express/lib/response");
 const { MONGODB_CONNECTION_URI, PORT } = process.env;
 const location = path.join(__dirname, "./models");
+var cors = require("cors");
 
 function beautifyFileName(fileName) {
   const newFileName = fileName
@@ -35,20 +36,34 @@ async function databaseInit() {
   return { connection, Models };
 }
 
+var whitelist = ["http://localhost:8080", "http://localhost:8081"];
+var corsOptions = {
+  origin: function (origin, callback) {
+    console.log({ origin });
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+
 async function initApp() {
   const { connection, Models } = await databaseInit();
   const indexRouter = require("./routes/index")(connection, Models);
   const offerPageRouter = require("./routes/offer")(connection, Models);
   const app = express();
-
+  app.use(cors(corsOptions));
   app.use(logger("dev"));
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
   app.use(express.static(path.join(__dirname, "public")));
+
   app.use("/api", indexRouter);
   app.use("/api/Offers", offerPageRouter);
   app.set("port", PORT);
+
   return app;
 }
 
