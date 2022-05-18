@@ -12,37 +12,37 @@ async function start() {
       jobTitle: "Senior Developer",
       jobLocation: "Bengaluru",
       jobExpiryDate: new Date("2015-03-25T12:00:00Z").toISOString(),
-      curreny: "Indian Rupees",
-      baseSalary: 1500000,
-      signingBonus: 100000,
+      curreny: "Dollars",
+      baseSalary: 100000,
+      signingBonus: 10000,
       noOfShares: 100000,
-      targetBonus: 5,
-      benefits: 800000,
+      targetBonus: 10,
+      benefits: 20400,
     },
     benefitsSection: [
         {
           name: "Medical",
           iconUrl: "https://i.ibb.co/WH9tmpy/svgviewer-png-output.png",
           description: "We cover 100% of the insurance cost for you and 50% for your dependents.",
-          amount: 240000,
+          amount: 6000,
         },
         {
           name: "Dentist",
           iconUrl: "https://i.ibb.co/Z60mKtK/svgviewer-png-output-2.png",
           description: "We cover 100% of the insurance cost for you and 50% for your dependents.",
-          amount: 10000,
+          amount: 400,
         },
         {
           name: "Vision",
           iconUrl: "https://i.ibb.co/hDkHmKq/svgviewer-png-output-3.png",
           description: "We cover 100% of the insurance cost for you and 50% for your dependents.",
-          amount: 10000,
+          amount: 400,
         },
         {
           name: "Free Lunch",
           iconUrl: "https://i.ibb.co/M5B63bz/svgviewer-png-output-4.png",
           description: "We offer daily lunches and snacks in the office.",
-          amount: 136000,
+          amount: 3500,
         },
         {
           name: "Unlimited PTO",
@@ -55,7 +55,7 @@ async function start() {
           iconUrl: "https://i.ibb.co/vVSZghF/svgviewer-png-output-6.png",
           description:
             "We offer 401k matching with our partner Human Interest and will match up to 4% of your base salary.",
-          amount: 400000,
+          amount: 10000,
         },
         {
           name: "Dog Friendly Office",
@@ -69,18 +69,16 @@ async function start() {
           iconUrl: "https://i.ibb.co/88brWqS/svgviewer-png-output-8.png",
           description:
             "As an employee at Dunder Mifflin, you'll never have to worry about buying paper for your printer ever again - it's all on us!",
-          amount: 4000,
+          amount: 100,
         },
       ],
     compProjection: {
-      baseSalary: 1500000,
-      signingBonus: 100000,
+      baseSalary: 100000,
+      signingBonus: 10000,
       noOfShares: 100000,
-      targetBonus: 5,
-      benefits: 800000,
-    },
-    offerStatus: "Accepted",
-    rejectReason: "None"
+      targetBonus: 10,
+      benefits: 20400,
+    }
   });
   
   console.log(offerInstance);

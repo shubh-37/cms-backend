@@ -72,13 +72,7 @@ const modelProperties = {
   },
   compProjection: {
     type: [compDiversificationSchema]
-  },
-  offerStatus: {
-    type: String,
-  },
-  rejectReason: {
-    type: String,
-  },
+  }
 };
 
 const modelOptions = {

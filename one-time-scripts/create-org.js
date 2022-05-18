@@ -56,7 +56,7 @@ async function start() {
       website: "https://www.peacocktv.com/stream-tv/the-office",
       companyHQ: "Scranton, PA",
       companySize: "50-99",
-      totalFunding: "50Cr",
+      totalFunding: "$20M",
       lastFundingType: "Series A",
       investors: [
         {
