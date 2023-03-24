@@ -8,7 +8,6 @@ const util = require("util");
 const fs = require("fs");
 const fsReaddir = util.promisify(fs.readdir);
 const _ = require("lodash");
-const res = require("express/lib/response");
 const { MONGODB_CONNECTION_URI, PORT } = process.env;
 const location = path.join(__dirname, "./models");
 var cors = require("cors");
