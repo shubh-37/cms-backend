@@ -8,15 +8,15 @@ async function start() {
     uniqueId: randomString.generate(7),
     org: "628526e3aa63951ca3301f28",
     introSection: {
-      candidateName: "Shubh Arya",
-      jobTitle: "Senior Developer",
-      jobLocation: "Bengaluru",
+      candidateName: "Mohit Rana",
+      jobTitle: "Junior Developer",
+      jobLocation: "Mumbai",
       jobExpiryDate: new Date("2015-03-25T12:00:00Z").toISOString(),
       curreny: "Dollars",
-      baseSalary: 100000,
-      signingBonus: 10000,
-      noOfShares: 100000,
-      targetBonus: 10,
+      baseSalary: 200000,
+      signingBonus: 15000,
+      noOfShares: 10000,
+      targetBonus: 5,
       benefits: 20400,
     },
     benefitsSection: [
@@ -73,10 +73,10 @@ async function start() {
         },
       ],
     compProjection: {
-      baseSalary: 100000,
-      signingBonus: 10000,
+      baseSalary: 200000,
+      signingBonus: 15000,
       noOfShares: 100000,
-      targetBonus: 10,
+      targetBonus: 5,
       benefits: 20400,
     }
   });
