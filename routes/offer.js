@@ -1,25 +1,24 @@
 var express = require("express");
 var router = express.Router();
 
-function offer(Models) {
+function offer(connection, Models) {
   /* GET users listing. */
   const { Offer } = Models;
-  console.log(Models);
   router.get("/", async function (req, res) {
     const { uniqueId } = req.query;
-    console.log({ uniqueId });
     const offerInstance = await Offer.findOne({ uniqueId }).populate({ path: "org", model: "Organisation" });
     res.send({ offer: offerInstance });
   });
-  router.post("/create", async function (req, res){
-    const data = req.body;
+  router.post("/create", async function (req, res) {
     try {
-      const emp = await Offer.create({ data });
-      res.status(201).json( { emp }); 
+      const data = req.body;
+      const emp = await Offer.create(data);
+      console.log(emp)
+      res.status(201).json({ emp, message: "Offer created" });
     } catch (error) {
-      res.status(400).json({ error });
+      res.status(400).json({ error: error.message });
     }
-  })
+  });
   return router;
 }
 
