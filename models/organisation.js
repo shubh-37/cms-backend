@@ -7,6 +7,7 @@ const modelProperties = {
   },
   website: {
     type: String,
+    required: true
   },
   companyHQ: {
     type: String,
