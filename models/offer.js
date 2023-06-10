@@ -38,9 +38,9 @@ const modelProperties = {
   targetBonus: {
     type: Number,
   },
-  benefits: {
-    type: [Schema.Types.ObjectId],
-  },
+  // benefits: {
+  //   type: [Schema.Types.ObjectId],
+  // },
 };
 
 const modelOptions = {
