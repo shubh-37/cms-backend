@@ -1,0 +1,64 @@
+var express = require("express");
+var router = express.Router();
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+function userDefinedException(message, statusCode) {
+  this.message = message;
+  this.statusCode = statusCode;
+}
+
+function auth(connection, Models) {
+  const { Employee } = Models;
+  router.post("/register", async function register(req, res) {
+    const { name, email, password, mobileNo, countryCode,  } = req.body;
+    try {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+      const user = await Employee.create({
+        name,
+        email,
+        mobileNo,
+        countryCode,
+        password: hashedPassword,
+      });
+      const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+        expiresIn: "30d",
+      });
+      return res.status(201).json({ token: token, email: email });
+    } catch (error) {
+      if (error.message.match("E11000 duplicate key error collection:")) {
+        return res.status(409).json({ message: "Duplicate User" });
+      }
+      return res.status(500).json({ message: error.message });
+    }
+  });
+
+  router.post("/login", async function login(req, res) {
+    const { email, password } = req.body;
+    try {
+      if (!email || !password) {
+        throw new userDefinedException("Please enter both Email and Password", 401);
+      }
+      const user = await Employee.findOne({ email });
+      if (!user) {
+        throw new userDefinedException("No user found!", 404);
+      }
+      const isPasswordCorrect = await bcrypt.compare(password, user.password);
+      if (!isPasswordCorrect) {
+        throw new userDefinedException("Wrong password!", 401);
+      }
+
+      const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+        expiresIn: "30d",
+      });
+
+      return res.status(200).json({ token });
+    } catch (error) {
+      return res.status(error.statusCode).json({ message: error.message });
+    }
+  });
+  return router;
+}
+
+module.exports = auth;
