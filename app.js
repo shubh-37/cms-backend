@@ -51,6 +51,7 @@ async function initApp() {
   const indexRouter = require("./routes/index")(connection, Models);
   const offerPageRouter = require("./routes/offer")(connection, Models);
   const authRouter = require("./routes/auth")(connection, Models);
+  const orgInfoRouter = require("./routes/org-info")(connection, Models);
   const app = express();
   app.use(cors(corsOptions));
   app.use(logger("dev"));
@@ -61,7 +62,8 @@ async function initApp() {
 
   app.use("/api", indexRouter);
   app.use("/api/Offers", offerPageRouter);
-  app.user("/api/auth", authRouter);
+  app.use("/api/auth", authRouter);
+  app.use("/api/orgInfo", orgInfoRouter);
   app.set("port", PORT);
 
   return app;
