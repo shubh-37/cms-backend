@@ -10,7 +10,7 @@ function userDefinedException(message, statusCode) {
 
 function auth(connection, Models) {
   const { Employee } = Models;
-  router.post("/register", async function register(req, res) {
+  router.post("/", async function register(req, res) {
     const { name, email, password, mobileNo, countryCode,  } = req.body;
     try {
       const salt = await bcrypt.genSalt(10);
